@@ -61,9 +61,9 @@ class ErrorController extends Controller
                     $array['error-info'] = $exception->errorInfo;
                 }
             }
-        }
-        if (($prev = $exception->getPrevious()) !== null) {
-            $array['previous'] = $this->convertExceptionToArray($prev);
+            if (($prev = $exception->getPrevious()) !== null) {
+                $array['previous'] = $this->convertExceptionToArray($prev);
+            }
         }
 
         return $array;
