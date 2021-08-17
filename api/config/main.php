@@ -1,4 +1,7 @@
 <?php
+
+use DevAV\oauth\Module;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -19,10 +22,8 @@ return [
             ]
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'api\models\User',
             'enableSession' => false,
-//            'enableAutoLogin' => true,
-//            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -42,6 +43,11 @@ return [
             'rules' => [
             ],
         ],
+    ],
+    'modules' => [
+        'oauth2' => [
+            'class' => Module::class,
+        ]
     ],
     'params' => $params,
 ];
